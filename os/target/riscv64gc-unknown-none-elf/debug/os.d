@@ -1,0 +1,1 @@
+/home/knifefire/Zkernel/os/target/riscv64gc-unknown-none-elf/debug/os: /home/knifefire/Zkernel/os/src/console.rs /home/knifefire/Zkernel/os/src/entry.asm /home/knifefire/Zkernel/os/src/lang_items.rs /home/knifefire/Zkernel/os/src/main.rs /home/knifefire/Zkernel/os/src/sbi.rs
