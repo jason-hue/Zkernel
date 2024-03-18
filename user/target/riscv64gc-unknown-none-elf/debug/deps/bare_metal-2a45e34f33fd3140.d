@@ -1,0 +1,7 @@
+/home/knifefire/Zkernel/user/target/riscv64gc-unknown-none-elf/debug/deps/libbare_metal-2a45e34f33fd3140.rmeta: /home/knifefire/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bare-metal-0.2.5/src/lib.rs
+
+/home/knifefire/Zkernel/user/target/riscv64gc-unknown-none-elf/debug/deps/libbare_metal-2a45e34f33fd3140.rlib: /home/knifefire/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bare-metal-0.2.5/src/lib.rs
+
+/home/knifefire/Zkernel/user/target/riscv64gc-unknown-none-elf/debug/deps/bare_metal-2a45e34f33fd3140.d: /home/knifefire/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bare-metal-0.2.5/src/lib.rs
+
+/home/knifefire/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bare-metal-0.2.5/src/lib.rs:

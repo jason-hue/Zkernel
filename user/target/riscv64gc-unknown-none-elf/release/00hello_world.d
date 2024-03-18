@@ -1,0 +1,1 @@
+/home/knifefire/Zkernel/user/target/riscv64gc-unknown-none-elf/release/00hello_world: /home/knifefire/Zkernel/user/src/bin/00hello_world.rs /home/knifefire/Zkernel/user/src/console.rs /home/knifefire/Zkernel/user/src/lang_item.rs /home/knifefire/Zkernel/user/src/lib.rs /home/knifefire/Zkernel/user/src/syscall.rs

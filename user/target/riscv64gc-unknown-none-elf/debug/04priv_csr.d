@@ -1,0 +1,1 @@
+/home/knifefire/Zkernel/user/target/riscv64gc-unknown-none-elf/debug/04priv_csr: /home/knifefire/Zkernel/user/src/bin/04priv_csr.rs /home/knifefire/Zkernel/user/src/console.rs /home/knifefire/Zkernel/user/src/lang_item.rs /home/knifefire/Zkernel/user/src/lib.rs /home/knifefire/Zkernel/user/src/sbi.rs /home/knifefire/Zkernel/user/src/syscall.rs
