@@ -1,51 +1,40 @@
-# RISCV64 Kernel
+# RISCV64 内核
 
-This project is a kernel designed to run on the RISCV64 platform.
+该项目是在 RISCV64 平台上运行的内核。
 
-## Usage
+## 使用方法
 
-To use this project, follow the instructions in the Makefile:
+### 编译
 
-```makefile
-# Define variables
-TARGET_NAME := os
-TARGET_BIN := os.bin
+`make build`
 
-# Default target
-all: build
+### 生成二进制文件
 
-# Compile the Release version
-build:
-    cd os && cargo build --release && cd ..
+`make bin`
 
-# Use rust-objcopy to generate the binary file
-bin: build
-    rust-objcopy --strip-all os/target/riscv64gc-unknown-none-elf/release/$(TARGET_NAME) -O binary os/target/riscv64gc-unknown-none-elf/release/$(TARGET_BIN)
+### 在 QEMU 上运行
 
-# Run on qemu
-run: bin
-    qemu-system-riscv64 \
-        -machine virt \
-        -nographic \
-        -bios bootloader/rustsbi-qemu.bin \
-        -device loader,file=os/target/riscv64gc-unknown-none-elf/release/$(TARGET_BIN),addr=0x80200000
+`make run`
 
-# Start gdb server
-gdbserver: bin
-    qemu-system-riscv64 \
-        -machine virt \
-        -nographic \
-        -bios bootloader/rustsbi-qemu.bin \
-        -device loader,file=os/target/riscv64gc-unknown-none-elf/release/$(TARGET_BIN),addr=0x80200000 \
-        -s -S
+### 启动 GDB 服务器
 
-# Start a GDB client connecting to Qemu
-gdbclient:
-    ~/path/to/riscv64-unknown-elf-gcc-8.3.0-2020.04.1-x86_64-linux-ubuntu14/bin/riscv64-unknown-elf-gdb \
-        -ex 'file os/target/riscv64gc-unknown-none-elf/release/os' \
-        -ex 'set arch riscv:rv64' \
-        -ex 'target remote localhost:1234'
+`make gdbserver`
 
-# Clean generated files
-clean:
-    cargo clean
+### 启动连接到 QEMU 的 GDB 客户端
+
+`make gdbclient`
+
+### 贡献
+如果您对贡献到该项目感兴趣，请提交拉取请求或提出问题。
+
+### 许可证
+该项目基于 MIT 许可证。
+
+The MIT License (MIT)
+Copyright © 2024 &lt;knifefire&gt;
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
