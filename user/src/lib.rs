@@ -1,24 +1,26 @@
 #![no_std]
 #![feature(linkage)]
 #![feature(panic_info_message)]
+
 #[macro_use]
 pub mod console;
-mod lang_item;
+mod lang_items;
 mod syscall;
 
-use syscall::*;
 #[no_mangle]
 #[link_section = ".text.entry"]
-pub extern "C" fn _start()->!{
+pub extern "C" fn _start() -> ! {
     clear_bss();
     exit(main());
-    panic!("unreachable after sys_exit!")
+    panic!("unreachable after sys_exit!");
 }
-#[linkage="weak"]
+
+#[linkage = "weak"]
 #[no_mangle]
-fn main()->i32{
+fn main() -> i32 {
     panic!("Cannot find main!");
 }
+
 fn clear_bss() {
     extern "C" {
         fn start_bss();
@@ -29,5 +31,11 @@ fn clear_bss() {
     });
 }
 
-pub fn write(fd: usize, buf: &[u8]) -> isize { sys_write(fd, buf) }
-pub fn exit(exit_code: i32) -> isize { sys_exit(exit_code) }
+use syscall::*;
+
+pub fn write(fd: usize, buf: &[u8]) -> isize {
+    sys_write(fd, buf)
+}
+pub fn exit(exit_code: i32) -> isize {
+    sys_exit(exit_code)
+}
