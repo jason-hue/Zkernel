@@ -6,6 +6,7 @@
       <sourceFolder url="file://$MODULE_DIR$/user/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/os/target" />
       <excludeFolder url="file://$MODULE_DIR$/user/target" />
+      <excludeFolder url="file://$MODULE_DIR$/.idea/copilot/chatSessions" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

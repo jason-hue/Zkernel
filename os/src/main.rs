@@ -4,6 +4,10 @@
 mod lang_items;
 mod sbi;
 mod console;
+mod batch;
+mod sync;
+mod trap;
+
 use core::arch::global_asm;
 global_asm!(include_str!("entry.asm"));
 
@@ -25,3 +29,4 @@ fn clear_bss() {
         }
     })
 }
+global_asm!(include_str!("link_apps.S"));
