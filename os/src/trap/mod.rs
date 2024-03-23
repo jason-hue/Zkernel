@@ -25,7 +25,7 @@ pub fn trap_handler(cx: &mut TrapContext)->&mut TrapContext{
             cx.x[10]= crate::syscall::syscall(cx.x[17], [cx.x[10], cx.x[11], cx.x[12]]) as usize;
         }
         Trap::Exception(Exception::StoreFault) | Trap::Exception(Exception::StorePageFault) =>{
-            crate::println!("[kernel] 应用程序中的 PageFault，内核杀死了它。");
+            crate::println!("[kernel] PageFault in application, kernel killed it.");
             crate::batch::run_next_app();
         }
         Trap::Exception(Exception::IllegalInstruction) => {
