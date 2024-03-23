@@ -1,4 +1,3 @@
-use crate::print;
 
 const FD_STDOUT: usize = 1;
 

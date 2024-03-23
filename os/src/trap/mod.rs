@@ -1,6 +1,5 @@
 mod context;
 use riscv::register::{
-    mtvec::TrapMode,
     scause::{self, Exception, Trap},
     stval, stvec,
 };

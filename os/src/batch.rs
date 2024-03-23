@@ -1,11 +1,9 @@
 use core::arch::asm;
 use lazy_static::lazy_static;
-use crate::println;
 use crate::sync::UPSafeCell;
 use crate::trap::TrapContext;
 
 const MAX_APP_NUM: usize = 16;
-const USER_STACK_OFFSET: usize = 4096*2;
 const KERNEL_STACK_SIZE: usize = 4096*2;
 const APP_BASE_ADDRESS: usize = 0x80400000;
 const APP_SIZE_LIMIT: usize = 0x200000;
@@ -107,8 +105,12 @@ impl AppManager{
             );
         }
     }
-
-
+}
+pub fn print_app_info() {
+    APP_MANAGER.exclusive_access().print_app_info();
+}
+pub fn init(){
+    print_app_info()
 }
 pub fn run_next_app()->!{
     let mut app_manager = APP_MANAGER.exclusive_access();
@@ -119,10 +121,10 @@ pub fn run_next_app()->!{
     app_manager.move_to_next_app();
     drop(app_manager);
     extern "C"{
-        fn _restore(cx_addr: usize);
+        fn __restore(cx_addr: usize);
     }
     unsafe{
-        _restore(KERNEL_STACK.push_context(
+        __restore(KERNEL_STACK.push_context(
             TrapContext::app_init_context(APP_BASE_ADDRESS,USER_STACK.get_sp())
         ) as *const _ as usize)
     }
