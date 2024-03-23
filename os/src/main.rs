@@ -7,6 +7,7 @@ mod console;
 mod batch;
 mod sync;
 mod trap;
+mod syscall;
 
 use core::arch::global_asm;
 global_asm!(include_str!("entry.asm"));
