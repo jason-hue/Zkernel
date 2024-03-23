@@ -6,6 +6,6 @@ extern crate user_lib;
 
 #[no_mangle]
 fn main() -> i32 {
-    println!("你好，世界");
+    println!("hello_world");
     0
 }

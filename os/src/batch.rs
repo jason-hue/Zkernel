@@ -71,7 +71,7 @@ impl AppManager{
         if app_id >= self.num_app {
             panic!("All applications completed!");
         }
-        println!("[kernel] 加载app_{}", app_id);
+        println!("[kernel] Loading app_{}", app_id);
         // clear app area
         core::slice::from_raw_parts_mut(
             APP_BASE_ADDRESS as *mut u8,
